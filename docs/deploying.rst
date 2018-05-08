@@ -78,13 +78,52 @@ A contract can only be deployed to a node running locally, using a local wallet,
 
   dotnet run -- deploy Contract.cs http://localhost:38220 -wallet mywallet -account "account 0" -password password -fee 1000 -gasprice 1 -gaslimit 30000
 
-Deployment with constructor params
-'''''''
-If the contract you are deploying accepts constructor params, you can additionally pass these in to the command line tool via the ``params`` argument.
 
 Success
 '''''''
 If the contract was deployed successfully, the tool will return the address of the contract.
 
-Calling Contracts
------------------
+Deployment with constructor params
+'''''''
+If the contract you are deploying accepts constructor params, you can additionally pass these in to the command line tool via the ``params`` argument.
+
+These params must be serialized into a string. The format of each parameter is "{0}#{1}", where {0} is an integer representing the Type of the serialized data, and {1} is the serialized data itself. Additionally, parameters must be separated by the pipe ``|`` character.
+
+Currently, only certain Types of data can be serialized. Refer to the following table for the mapping between Type and its integer mapping.
+
+TODO RST format table
+
+Type | Integer representing serialized type | Serialize to string
+----------------
+System.Boolean | 1 | System.Boolean.ToString()
+System.Byte | 2 | System.Byte.ToString()
+System.Byte[] | 3 | BitConverter.ToString()
+System.Char | 4 | System.Char.ToString()
+System.SByte | 5 | System.SByte.ToString()
+System.Short | 6 | System.Short.ToString()
+System.String | 7 | System.String
+System.UInt32 | 8 | System.UInt32.ToString()
+NBitcoin.UInt160 | 9 | NBitcoin.UInt160.ToString()
+System.UInt64 | 10 | System.UInt64.ToString()
+Stratis.SmartContracts.Address | 11 | Stratis.SmartContracts.Address.ToString()
+
+
+Example
+-------------
+A smart contract has a constructor with the following signature:
+
+::
+
+  public Token(ISmartContractState state, UInt160 owner, UInt64 supply, Byte[] secretBytes)
+
+In addition to the mandatory ISmartContractState, there are 3 params which need to be supplied. Let's assume they have these values:
+
+* UInt160 owner = 0x95D34980095380851902ccd9A1Fb4C813C2cb639
+* UInt64 supply = 1000000
+* Byte[] secretBytes = { 0xAD, 0xBC, 0xCD }
+
+The serialized string representation of this data looks like this:
+
+::
+
+  9#0x95D34980095380851902ccd9A1Fb4C813C2cb639|10#1000000|3#AD-BC-CD
