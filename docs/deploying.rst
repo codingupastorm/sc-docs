@@ -16,8 +16,34 @@ The smart contract daemon is located in the ``src/Stratis.StratisSmartContractsD
 .. warning::
   The smart contract test network will break. We provide no guarantee of its uptime and may reset the network as deemed necessary. For the most up-to-date information, join us on Discord: :ref:`support_and_community`.
 
-TODO: Create a wallet, get funds and possibly mine.
+Create a Wallet
+---------------
 
+Interacting with contracts requires funds. As with making any transaction, users must pay a fee to include transactions in a block and will need to pay a fee for contract execution as well. We call this fee "gas".
+
+The smart contract API hasn't yet been integrated with any GUI wallets, so for now we use the API directly via swagger. Whilst your node is running, navigate to `localhost:38220/swagger <localhost:38220/swagger>`_.
+
+Under the `Wallet` header, find the call for `/api/Wallet/create`. You can create a new wallet on this node by filling in just the name and password properties on the request:
+
+::
+
+  {
+    "name": "Satoshi",
+    "password": "password"
+  }
+
+You now have a wallet with addresses good to go. To check these addresses out, navigate to the call for `/api/Wallet/addresses`. You can see a list of addresses by inputting the wallet name you just used above and the account name ``account 0``.
+
+Get Funded
+----------
+
+The easiest way for you to get some test coins to use for deploying and calling contracts will be to hit us up on Discord: :ref:`support_and_community`.
+
+Alternatively, if you want to get more involved and earn some test coins along the way, feel free to start mining! To do so, when you start your node add a couple of extra parameters:
+
+::
+
+  dotnet run -addnode=13.64.119.220 -addnode=20.190.57.145 -addnode=40.68.165.12 -mine=1 -mineaddress=oneofyouraddresseshere
 
 Contract Deployment
 -------------------
