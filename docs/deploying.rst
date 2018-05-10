@@ -91,22 +91,21 @@ These params must be serialized into a string. The format of each parameter is "
 
 Currently, only certain Types of data can be serialized. Refer to the following table for the mapping between Type and its integer mapping.
 
-TODO RST format table
+.. csv-table:: Param Type Serialization
+  :header: "Type", "Integer representing
+   serialized type", "Serialize to string"
 
-Type | Integer representing serialized type | Serialize to string
-----------------
-System.Boolean | 1 | System.Boolean.ToString()
-System.Byte | 2 | System.Byte.ToString()
-System.Byte[] | 3 | BitConverter.ToString()
-System.Char | 4 | System.Char.ToString()
-System.SByte | 5 | System.SByte.ToString()
-System.Short | 6 | System.Short.ToString()
-System.String | 7 | System.String
-System.UInt32 | 8 | System.UInt32.ToString()
-NBitcoin.UInt160 | 9 | NBitcoin.UInt160.ToString()
-System.UInt64 | 10 | System.UInt64.ToString()
-Stratis.SmartContracts.Address | 11 | Stratis.SmartContracts.Address.ToString()
-
+  System.Boolean, 1, System.Boolean.ToString()
+  System.Byte, 2, System.Byte.ToString()  
+  System.Byte[], 3, BitConverter.ToString()
+  System.Char, 4, System.Char.ToString()
+  System.SByte, 5, System.SByte.ToString()
+  System.Short, 6, System.Short.ToString()
+  System.String, 7, System.String
+  System.UInt32, 8, System.UInt32.ToString()
+  NBitcoin.UInt160, 9, NBitcoin.UInt160.ToString()
+  System.UInt64, 10, System.UInt64.ToString()
+  Stratis.SmartContracts.Address, 11, Stratis.SmartContracts.Address.ToString()
 
 Example
 -------------
