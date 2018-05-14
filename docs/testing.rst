@@ -10,7 +10,7 @@ With Stratis Smart Contracts, your tests can be developed and debugged using C# 
 The Basics
 ----------
 
-This section will again reference the `Visual Studio Template <https://www.visualstudio.com/downloads/>`_. If you're not using the template, the testing code can be found `here <https://www.visualstudio.com/downloads/>`_.
+This section will again reference the `Stratis Smart Contracts Visual Studio Template <https://marketplace.visualstudio.com/items?itemName=StratisGroupLtd.StratisSmartContractsTemplate>`_.
 
 The tests inside the template use the ``Microsoft.VisualStudio.TestTools.UnitTesting`` library, so may be familiar to C# developers. A brief introduction:
 
@@ -23,4 +23,14 @@ To run all of the tests together, in Visual Studio right click on ``[TestClass]`
 
 You can also debug contract execution in Visual Studio. If you set breakpoints in the Auction contract in methods being tested, and then right click and select `Debug Tests` on the test methods, you will reach your breakpoint and be able to inspect the current state of the contract and step through execution just like you were debugging any other C# application.
 
-The unit tests rely on the injection of mock contract state.
+An Example
+----------
+
+Stepping through the `TestBidding()` method from the template should help you understand the rough approach to unit testing your contracts with a mock contract state.
+
+::
+
+  var auction = new Auction(SmartContractState, Duration);
+
+The first step to testing your contracts is initialising them. You'll note that we're injecting a ``TestSmartContractState`` object into our new ``Auction``. This ``TestSmartContractState`` object is an implementation of the same ``ISmartContractState`` interface that is injected when smart contracts are initialised on-chain, except in this case all of the properties can be set by you.
+This is really handy for you to explicitly target scenarios in your contract's execution.
