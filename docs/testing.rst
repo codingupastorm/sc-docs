@@ -13,7 +13,6 @@ The Basics
 This section will again reference the `Visual Studio Template <https://www.visualstudio.com/downloads/>`_. If you're not using the template, the testing code can be found `here <https://www.visualstudio.com/downloads/>`_.
 
 The tests inside the template use the ``Microsoft.VisualStudio.TestTools.UnitTesting`` library, so may be familiar to C# developers. A brief introduction:
-t
 
 - ``[TestClass]`` defines a class in which tests are defined.
 - ``[TestInitialize]`` is used to mark a method to be run before tests execute, most commonly to set up some testing context.
