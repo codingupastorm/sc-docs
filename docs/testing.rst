@@ -34,3 +34,17 @@ Stepping through the `TestBidding()` method from the template should help you un
 
 The first step to testing your contracts is initialising them. You'll note that we're injecting a ``TestSmartContractState`` object into our new ``Auction``. This ``TestSmartContractState`` object is an implementation of the same ``ISmartContractState`` interface that is injected when smart contracts are initialised on-chain, except in this case all of the properties can be set by you.
 This is really handy for you to explicitly target scenarios in your contract's execution.
+
+::
+
+  Assert.IsNull(SmartContractState.PersistentState.GetObject<Address>("HighestBidder").Value);
+  Assert.AreEqual(0uL, SmartContractState.PersistentState.GetObject<ulong>("HighestBid"));
+
+These calls check that the world state is as we expect after contract instantiation. Namely that no highest bidder has yet been set, and the current highest bidder is set to 0, which is exactly what the constructor is set to do.
+
+::
+  ((TestMessage)SmartContractState.Message).Value = 100;
+
+  auction.Bid();
+
+The first line here is an example of setting the state to represent exact scenarios that you wish to test.
