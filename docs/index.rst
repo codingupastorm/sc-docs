@@ -11,11 +11,9 @@ Stratis Smart Contracts
     :alt: Solidity logo
     :align: center
 
-Stratis Smart Contracts are immutable blocks of code that can be deployed on a Stratis blockchain to enable the development of decentralised applications. Written in C# with some constraints applied, Stratis Smart Contracts execute in real .NET and allow on-chain processing, data storage and fund transfers.
+Smart contracts can now be deployed on the Stratis Full Node. Like the Full Node, Stratis smart contracts are written in C#. Smart contracts extend the functionality of a blockchain and allow it to map out complex financial interactions through the sending of funds and storage of data. However, as we shall see later in this document, the uses of smart contracts are not limited to financial interactions.
 
-Writing a smart contract in C# with Stratis is just like building any other .NET application, with the ability to develop, debug and test in Visual Studio. If you’re coming from an object-oriented background, you can think of a smart contract as a kind of immutable on-chain singleton.
-
-You can use smart contracts to create tokens, auctions, investment funds and other complex financial instruments.
+The purpose of this document is to provide some basic theory about smart contracts, briefly explore some use cases, and then help you start creating your own. An interesting example of a smart contract, based on a real-world case, is supplied to kickstart your learning.
 
 .. warning::
     The Stratis Smart Contract platform is currently in an open alpha stage. Things may break, and aspects of the development process are subject to change. Please don’t use the alpha version of Stratis Smart Contracts for production applications.
