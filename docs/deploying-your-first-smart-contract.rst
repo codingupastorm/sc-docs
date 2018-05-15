@@ -21,7 +21,7 @@ Downloading the smart contract source
 
 First, download a copy of `Microsoft Visual Studio <https://www.visualstudio.com/downloads/>`_ if you don't have a copy already. This is the standard IDE for C# development and the Community Edition is available for free.
 
-Next, you must download or clone the `sc-alpha branch of the Stratis Smart Contract Enabled Full Node <https://github.com/stratisproject/StratisBitcoinFullNode>`_. This repository contains everything you need to run a Stratis full node that can sync and mine on a Stratis smart contract network. It also contains:
+Next, you must download or clone the `sc-alpha branch of the Stratis Smart Contract Enabled Full Node <https://github.com/stratisproject/StratisBitcoinFullNode/tree/sc-alpha>`_. This repository contains everything you need to run a Stratis full node that can sync and mine on a Stratis smart contract network. It also contains:
 
 1. The SCT which, as you will see, helps validate and deploy contracts.
 2. The smart contract Visual Studio Solution Template, which contains the auction smart contract as "starting code" for any project created with it.
@@ -106,7 +106,7 @@ The SCT provides further information on using these commands. For example, the f
 Running a smart contract enabled version of the Stratis full node
 -----------------------------------------------------------------
 
-To interact with the smart contract test network, you now need to build the smart contract daemon. This is the Stratis.StratisSmartContractsD project in the `sc-alpha branch of the Stratis Smart Contract Enabled Full Node <https://github.com/stratisproject/StratisBitcoinFullNode>`_, which you either downloaded or cloned. When the project is built, run the daemon as follows:
+To interact with the smart contract test network, you now need to build the smart contract daemon. This is the Stratis.StratisSmartContractsD project in the `sc-alpha branch of the Stratis Smart Contract Enabled Full Node <https://github.com/stratisproject/StratisBitcoinFullNode/tree/sc-alpha>`_, which you either downloaded or cloned. When the project is built, run the daemon as follows:
 
 ::
 

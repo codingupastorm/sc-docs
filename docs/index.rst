@@ -31,6 +31,5 @@ Contents
    smart-contracts-basic-theory.rst
    uses-of-smart-contracts.rst
    deploying-your-first-smart-contract.rst
-   report-a-bug.rst
    support-and-community.rst
    appendix-future-enhancements-to-smart-contracts.rst
