@@ -2,4 +2,6 @@
 Report a Bug
 ###############################
 
-Work In Progress
+You can raise any issues you have along the way in the `Stratis Full Node github repository <https://www.visualstudio.com/downloads/>`_. Please apply the `smart-contracts` label to any issues that are specific to smart contracts.
+
+For anything urgent, feel free to contact us in the `#smartcontracts` channel in Discord. 
