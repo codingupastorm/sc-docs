@@ -161,12 +161,13 @@ To create a wallet, navigate to the Wallet section and use the `/api/Wallet/crea
     "password": "password"
   }
 
-You now have a wallet containing some addresses. To see the addresses, use the `/api/Wallet/addresses` call, which is also found in the Wallet section. You just need to specify your wallet name.
+You now have a wallet containing some TSTRAT addresses. To see the addresses, use the `/api/Wallet/addresses` call, which is also found in the Wallet section. You just need to specify your wallet name.
 
 Getting funds 
 ^^^^^^^^^^^^^
 
-The easiest way to get some TSTRAT to use for deploying and calling contracts is to contact us on Discord: :ref:`support_and_community`.
+The easiest way to get some TSTRAT is use the `smart contracts faucet <https://smartcontractsfaucet.stratisplatform.com/>`_. To receive 100 TSTRAT, specify a TSTRAT address from your wallet. 
+
 
 Alternatively, if you want to get more involved and earn some TSTRAT along the way, feel free to start mining! To begin mining, restart your node with an address from your wallet:
 
@@ -190,13 +191,13 @@ From the command-line, you can use the SCTs deploy command to achieve all these 
 
   dotnet run -- deploy [PATH_TO_SMART_CONTRACT] http://localhost:38220 -wallet [YOUR_WALLET_NAME] -password [YOUR_PASSWORD] -fee 20000
   
-As before, when you were validating the auction smart contract, you need to obtain the path to the contract.cs file. However, because the auction c# class contains a constructor parameter, ``durationBlocks``, you must pass this value as well. The ``durationBlocks`` parameter specifies how many blocks are added to blockchain before the auction ends. In the following example, 20 blocks are added to the blockchain before the auction ends:
+As before, when you were validating the auction smart contract, you need to obtain the path to the Auction.cs file. However, because the Auction C# class contains a constructor parameter, ``durationBlocks``, you must pass this value as well. The ``durationBlocks`` parameter specifies how many blocks are added to blockchain before the auction ends. In the following example, 20 blocks are added to the blockchain before the auction ends:
 
 ::
 
   dotnet run -- deploy PATH_TO_SMART_CONTRACT http://localhost:38220 -wallet [YOUR_WALLET_NAME] -password [YOUR_PASSWORD] -fee 20000 --params 10#20
   
-A value of 20 is used because blocks are not confirmed until they are 5 blocks deep. Until the block which the smart contract is in has been confirmed, you cannot run the smart contract. More information on specifying constructor parameters is given in this subsection. 
+A value of 20 is used because blocks are not confirmed until they are 5 blocks deep. Until the block which the smart contract is in has been confirmed, you cannot run the smart contract. You will notice that the value of 20 is preceeded by 10#. This information is part of the ``durationBlocks`` constructor parameter. More information on specifying constructor parameters is given in this subsection. 
 
 When you deploy the smart contract, you should also check the block height. To do this, find the Consensus.Height in the Node Stats of the full node output. Keep checking the block height. After Consensus.Height has incremented by 5, you can be sure the smart contract has been deployed.
 
@@ -258,7 +259,7 @@ You can use Swagger to place a bid on the auction smart contract you have deploy
     "contractAddress": "[YOUR_CONTRACT_ADDRESS]",
     "methodName": "Bid",
     "amount": "10",
-    "feeAmount": "20000",
+    "feeAmount": "0.001",
     "password": "[YOUR_PASSWORD]",
     "sender": "[A_WALLET_ADDRESS]",
   }
