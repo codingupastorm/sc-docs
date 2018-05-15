@@ -12,7 +12,7 @@ This chapter takes a further look at the smart contract-specific parts of the Au
 
 The first line in the contract is a reference to the ``Stratis.SmartContracts`` NuGet package. This package allows you to inherit from the ``SmartContract`` class and thereby provides subclasses with useful functionality such as sending funds, hashing and saving data. If you are not using the Visual Studio template, you can create smart contracts just by including the ``Stratis.SmartContracts`` NuGet package in your project and inheriting from ``SmartContract``.
 
-The only libraries that are allowed to be included in the current iteration of Stratis Smart Contracts are ``System``, ``System.Linq`` and ``Stratis.SmartContracts``.
+The only libraries that can be included in the current iteration of Stratis Smart Contracts are ``System``, ``System.Linq`` and ``Stratis.SmartContracts``.
 
 ::
 
@@ -42,7 +42,7 @@ The ``Address`` class is included as part of ``Stratis.SmartContracts`` It is an
     }
   }
 
-``PersistentState.GetMapping`` returns a dictionary-like structure for storage. Using a standard .NET dictionary would require serializing and deserializing all of the dictionary data every time it was updated. For dictionaries with thousands of entries (think balances of a token contract), this would require a significant amount of processing. ``ISmartContractMapping`` instead stores individual values directly into the underlying ``PersistentState``.
+``PersistentState.GetMapping`` returns a dictionary-like structure for storage. Using a standard .NET dictionary would require serializing and deserializing all the dictionary data every time it was updated. For dictionaries with thousands of entries (think balances of a token contract), this would require a significant amount of processing. ``ISmartContractMapping`` instead stores individual values directly into the underlying ``PersistentState``.
 
 If you require lists of information, you also have access to ``ISmartContractList`` and ``PersistentState.GetList``.
 
@@ -59,9 +59,9 @@ If you require lists of information, you also have access to ``ISmartContractLis
 
 The contract constructor gets run when the contract is created for the first time. Contracts must override the base class constructor and inject ``ISmartContractState``, which must be the first parameter of the constructor. Other parameters should be positioned after this parameter.
 
-The ``Message`` and ``Block`` objects are readonly properties on the ``SmartContract`` class which the Auction class inherits. These properties provide access to information about the current context that a contract call is executing in. For example: block numbers, the address that called the contract, etc.
+The ``Message`` and ``Block`` objects are read-only properties on the ``SmartContract`` class which the Auction class inherits. These properties provide access to information about the current context that a contract call is executing in. For example: block numbers, the address that called the contract, etc.
 
-Assigning a value to ``Owner``, ``EndBlock``, and ``HasEnded`` saves the values in ``PersistentState`` via their property setters. Setting ``Owner`` is a very common pattern when developing smart contracts amnd gives extra functionality to the creator of the contract. You will notice that in the ``AuctionEnd`` method, funds are sent to ``Owner``.
+Assigning a value to ``Owner``, ``EndBlock``, and ``HasEnded`` saves the values in ``PersistentState`` via their property setters. Setting ``Owner`` is a very common pattern when developing smart contracts and gives extra functionality to the creator of the contract. You will notice that in the ``AuctionEnd`` method, funds are sent to ``Owner``.
 
 ::
 

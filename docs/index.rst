@@ -31,5 +31,7 @@ Contents
    smart-contracts-basic-theory.rst
    uses-of-smart-contracts.rst
    deploying-your-first-smart-contract.rst
+   auction-smart-contract.rst
+   testing.rst
    support-and-community.rst
    appendix-future-enhancements-to-smart-contracts.rst

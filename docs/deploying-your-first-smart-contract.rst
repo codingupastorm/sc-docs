@@ -242,7 +242,6 @@ You can use Swagger to place a bid on the auction smart contract you have deploy
     "feeAmount": "20000",
     "password": "[YOUR_PASSWORD]",
     "sender": "[A_WALLET_ADDRESS]",
-    "parameters": []
   }
 
 Once you have placed the bid, you will need to wait for the Consensus.Height to be incremented by another 5 blocks. At this point the bid transaction is confirmed. Finally, you can check the bid is stored on the test network.
