@@ -231,6 +231,7 @@ Placing a bid on the auction smart contract
 -------------------------------------------
 
 You can use Swagger to place a bid on the auction smart contract you have deployed. Navigate to the SmartContracts section and use `/api/SmartContracts/build-and-send-call`. For example, the following usage places a bid of 10 TSTRAT.
+
 ::
 
   {
