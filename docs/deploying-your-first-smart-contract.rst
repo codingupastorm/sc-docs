@@ -8,7 +8,7 @@ This chapter takes you through deploying a smart contract, which simulates an au
 2. Create a smart contracts project, which will include an auction smart contract and unit tests.
 3. Validate the smart contract with the smart contract tool (SCT).
 4. Run the smart contract enabled version of the full node.
-5. Get the funds to deploy the auction smart contract and place a bid..
+5. Get the funds to deploy the auction smart contract and place a bid.
 6. Build and deploy the smart contract.
 7. Place a bid.
 8. Check the bid has been stored on the test network.
@@ -42,7 +42,7 @@ Build the SCT and navigate to its project directory:
 
   cd src/Stratis.SmartContracts.Tools.Sct
 
-You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step out for them before you deploy. Right click on your Auction.cs file tab in Visual Studio and click ‘Copy Path’. Then, back on the command line, use SCTs validate command:
+You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step for them before you deploy. Right click on your Auction.cs file tab in Visual Studio and click ‘Copy Path’. Then, back on the command line, use SCTs validate command:
 
 ::
 
@@ -80,7 +80,7 @@ And this line at the top of the Auction.cs file:
   using System;  
 
 
-So why is this line problematic inside a smart contract? Different nodes are going to execute the code at different times and because of this, they all receive a different result for ``DateTime.Now``. If this value was persisted in some way, all of the nodes would receive a different outcome for the contract state and would fail to reach a consensus.
+So why is the first line problematic inside a smart contract? Different nodes are going to execute the code at different times and because of this, they all receive a different result for ``DateTime.Now``. If this value was persisted in some way, all of the nodes would receive a different outcome for the contract state and would fail to reach a consensus.
 
 Make sure you have saved Auction.cs and run the validation command again. SCT recognizes this non-deterministic call:
 
@@ -166,7 +166,7 @@ You now have a wallet containing some TSTRAT addresses. To see the addresses, us
 Getting funds 
 ^^^^^^^^^^^^^
 
-The easiest way to get some TSTRAT is use the `smart contracts faucet <https://smartcontractsfaucet.stratisplatform.com/>`_. To receive 100 TSTRAT, specify a TSTRAT address from your wallet. Make a note of the address you used. Use this TSTRAT address for deploying and testing the smart contract.  
+The easiest way to get some TSTRAT is use the `smart contracts faucet <https://smartcontractsfaucet.stratisplatform.com/>`_. To receive 100 TSTRAT, specify a TSTRAT address from your wallet. Make a note of the address you use. Use this TSTRAT address for deploying and testing the smart contract.  
 
 Alternatively, if you want to get more involved and earn some TSTRAT along the way, feel free to start mining! To begin mining, restart your node with an address from your wallet:
 
@@ -211,7 +211,7 @@ Smart contract parameters are serialized into a string. The format of each param
 
 Each parameter must be separated by the pipe ``|`` character.
 
-Currently, only certain Types of data can be serialized. Refer to the following table for the mapping between Type and its integer mapping.
+Currently, only certain types of data can be serialized. Refer to the following table for the mapping between a type and its integer representation.
 
 .. csv-table:: Param Type Serialization
   :header: "Type", "Integer representing

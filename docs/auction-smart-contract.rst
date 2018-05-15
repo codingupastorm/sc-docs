@@ -1,5 +1,5 @@
 ###############################
-The auction smart contract
+The Auction Smart Contract
 ###############################
 
 This chapter takes a further look at the smart contract-specific parts of the Auction C# class.
