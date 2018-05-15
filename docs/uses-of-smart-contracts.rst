@@ -1,3 +1,4 @@
+.. _smart_contract_uses:
 ###############################
 Uses of Smart Contracts
 ###############################
