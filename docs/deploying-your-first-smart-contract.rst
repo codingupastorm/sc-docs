@@ -2,13 +2,13 @@
 Deploying your first smart contract
 ###############################
 
-This chapter takes you through deploying a smart contract, which simulates an auction. The smart contract is provided as a Visual Studio Solution Template. As part of the deployment process, the smart contract is validated to ensure it does not contain any determinism. Once deployed, a bid is then placed on the auction to test that the smart contract was deployed correctly. The steps taken when deploying the smart contract are as follows:
+This chapter takes you through deploying a smart contract, which simulates an auction. The smart contract is provided as a Visual Studio Project Template. As part of the deployment process, the smart contract is validated to ensure it does not contain any determinism. Once deployed, a bid is then placed on the auction to test that the smart contract was deployed correctly. The steps taken when deploying the smart contract are as follows:
 
 1. Download or clone the source. 
 2. Create a smart contracts project, which will include an auction smart contract and unit tests.
 3. Validate the smart contract with the smart contract tool (SCT).
 4. Run the smart contract enabled version of the full node.
-5. Get the funds to deploy the auction smart contract and place a bid.
+5. Get the funds to deploy the auction smart contract and place a bid..
 6. Build and deploy the smart contract.
 7. Place a bid.
 8. Check the bid has been stored on the test network.
@@ -24,19 +24,20 @@ First, download a copy of `Microsoft Visual Studio <https://www.visualstudio.com
 Next, you must download or clone the `sc-alpha branch of the Stratis Smart Contract Enabled Full Node <https://github.com/stratisproject/StratisBitcoinFullNode/tree/sc-alpha>`_. This repository contains everything you need to run a Stratis full node that can sync and mine on a Stratis smart contract network. It also contains:
 
 1. The SCT which, as you will see, helps validate and deploy contracts.
-2. The smart contract Visual Studio Solution Template, which contains the auction smart contract as "starting code" for any project created with it.
+2. The smart contract Visual Studio Project Template, which contains the auction smart contract as "starting code" for any project created with it.
 
 Creating a smart contracts project
 ----------------------------------
 
-To create a new smart contracts project, navigate to File > New > Project… and create a new ‘Stratis SmartContract Project’ under ‘Visual C#’. This generates a new solution containing Auction.cs and some sample unit tests. Notice that Auction.cs just contains a C# class called auction. Later, you will explore the individual properties and methods on this class in detail.
+To create a new smart contracts project, navigate to File > New > Project… and create a new ‘Stratis SmartContract Project’ under ‘Visual C#’. This generates a new solution containing Auction.cs and some sample unit tests. Notice that Auction.cs just contains a C# class called Auction. Later, you will explore the individual properties and methods on this class in detail.
 
 Validating your smart contract
 ------------------------------
 
-When you attempt to deploy a smart contract by including it in a transaction, it is tested to see if its bytecode is in the correct format and is deterministic. Nodes carry out this testing before they include a smart contract transaction in a block. In addition, other nodes on the network attempt to validate any smart contracts that they find in any blocks they receive. If the smart contracts are not valid, the entire block is rejected. Therefore, you will want to know your smart contract meets the validation criteria before you try and deploy it. Stratis provides SCT (a command-line tool) for validating and building smart contracts.
+When you attempt to deploy a smart contract by including it in a transaction, it is tested to see if its C# code is correct and deterministic. Mining nodes carry out this testing before they include a smart contract transaction in a block. In addition, other nodes on the network attempt to validate any smart contracts that they find in any blocks they receive. If the smart contracts are not valid, the entire block is rejected. Therefore, you will want to know your smart contract meets the validation criteria before you try and deploy it. Stratis provides SCT (a command-line tool) for validating and building smart contracts.
 
-Build the command tool and navigate to its project directory:
+Build the SCT and navigate to its project directory:
+
 ::
 
   cd src/Stratis.SmartContracts.Tools.Sct
@@ -72,15 +73,32 @@ To further understand why this tool is important, go back to your contract and a
 
   var test = DateTime.Now;
 
+And this line at the top of the Auction.cs file:
+
+::
+
+  using System;  
+
+
 So why is this line problematic inside a smart contract? Different nodes are going to execute the code at different times and because of this, they all receive a different result for ``DateTime.Now``. If this value was persisted in some way, all of the nodes would receive a different outcome for the contract state and would fail to reach a consensus.
 
 Make sure you have saved auction.cs and run the validation command again. SCT recognizes this non-deterministic call:
 
-====== Smart Contract Validation results for file [YOUR_FILE_PATH] ======
-Compilation Result
-Compilation OK: False
-Error: (80,20): error CS0103: The name 'DateTime' does not exist in the current context
+::
+  ====== Smart Contract Validation results for file [YOUR_FILE_PATH] ======
+  Compilation Result
+  Compilation OK: True
 
+  Format Validation Result
+  Format Valid: True
+
+  Determinism Validation Result
+  Determinism Valid: False
+
+  .ctor:
+   System.DateTime System.DateTime::get_Now() is non-deterministic.
+   
+Now back out the non-deterministic code and resave.
 
 More about the SCT
 ^^^^^^^^^^^^^^^^^^
