@@ -142,7 +142,7 @@ To create a wallet, navigate to the Wallet section and use the `/api/Wallet/crea
     "password": "password"
   }
 
-You now have a wallet containing some addresses. To see the addresses, use the `/api/Wallet/addresses` call, which is also found in the Wallet section. You just need to specify your wallet name and an account name of ``account 0``.
+You now have a wallet containing some addresses. To see the addresses, use the `/api/Wallet/addresses` call, which is also found in the Wallet section. You just need to specify your wallet name.
 
 Getting funds 
 ^^^^^^^^^^^^^
@@ -169,13 +169,13 @@ From the command-line, you can use the SCTs deploy command to achieve all these 
 
 ::
 
-  dotnet run -- deploy [PATH_TO_SMART_CONTRACT] http://localhost:38220 -wallet [YOUR_WALLET_NAME] -account "account 0" -password [YOUR_PASSWORD] -fee 1000 -gasprice 1 -gaslimit 30000
+  dotnet run -- deploy [PATH_TO_SMART_CONTRACT] http://localhost:38220 -wallet [YOUR_WALLET_NAME] -password [YOUR_PASSWORD] -fee 20000
   
 As before, when you were validating the auction smart contract, you need to obtain the path to the contract.cs file. However, because the auction c# class contains a constructor parameter, ``durationBlocks``, you must pass this value as well. The ``durationBlocks`` parameter specifies how many blocks are added to blockchain before the auction ends. In the following example, 20 blocks are added to the blockchain before the auction ends:
 
 ::
 
-  dotnet run -- deploy PATH_TO_SMART_CONTRACT http://localhost:38220 -wallet [YOUR_WALLET_NAME] -account "account 0" -password [YOUR_PASSWORD] -fee 1000 -gasprice 1 -gaslimit 30000 --params 10#20
+  dotnet run -- deploy PATH_TO_SMART_CONTRACT http://localhost:38220 -wallet [YOUR_WALLET_NAME] -password [YOUR_PASSWORD] -fee 20000 --params 10#20
   
 A value of 20 is used because blocks are not confirmed until they are 5 blocks deep. Until the block which the smart contract is in has been confirmed, you cannot run the smart contract. More information on specifying constructor parameters is given in this subsection. 
 
@@ -236,14 +236,11 @@ You can use Swagger to place a bid on the auction smart contract you have deploy
 
   {
     "walletName": "[YOUR_WALLET_NAME]",
-    "accountName": "account 0",
     "contractAddress": "[YOUR_CONTRACT_ADDRESS]",
     "methodName": "Bid",
     "amount": "10",
-    "feeAmount": "1",
+    "feeAmount": "20000",
     "password": "[YOUR_PASSWORD]",
-    "gasPrice": "1",
-    "gasLimit": "30000",
     "sender": "[A_WALLET_ADDRESS]",
     "parameters": []
   }
@@ -253,19 +250,7 @@ Once you have placed the bid, you will need to wait for the Consensus.Height to 
 Checking the bid has been stored on the test network
 -----------------------------------------------------
 
-Bids are persisted on each node in the network. You can use a Swagger call to check your bid has been stored on the test network. Navigate to the SmartContracts section and use `/api/SmartContracts/storage`. For the parameters, use the address of your deployed auction smart contract, the string "HighestBid" for the StorageKey, and Ulong for the DataType.
-
-Because smart contract data is propagated across the network, you can also connect to one of three test network nodes and make the call:
-
-`13.64.119.220:38220/swagger <13.64.119.220:38220/swagger>`_
-
-`20.190.57.145:38220/swagger <20.190.57.145:38220/swagger>`_
-
-`40.68.165.12:38220/swagger <40.68.165.12:38220/swagger>`_
-
-In all cases, a value of 10 should be returned.
-
-To further test, you can make a second, higher bid (20 TSTRAT for example), but this time make the `/api/SmartContracts/build-and-send-call` on one of the above nodes. After the block containing this second bid has been confirmed, test that the highest bid has been updated on your localhost and the other two test network nodes.
+Bids are persisted on each node in the network. You can use a Swagger call to check your bid has been stored on the test network. Navigate to the SmartContracts section and use `/api/SmartContracts/storage`. For the parameters, use the address of your deployed auction smart contract, the string "HighestBid" for the StorageKey, and Ulong for the DataType. A value of 10 should be returned.
 
 
 

@@ -5,28 +5,26 @@ Testing
 Stratis Smart Contracts are unit-testable in the same way as any other C# class. Unit tests can be written with the testing framework of your choice. Tests can be developed and debugged with Visual Studio's step-through debugger.
 
 .. note::
-  While contracts are fully testable, available testing utilities are still primitive. Future versions of smart contracts will enable testing with the resource tracking code injected, on top of a local test blockchain.
+  While contracts are fully testable, the available testing utilities are still primitive. Future versions of smart contracts will enable testing on top of a local test blockchain with resource tracking code injected.
 
 The Basics
 ----------
 
-This section will again reference the `Stratis Smart Contracts Visual Studio Template <https://marketplace.visualstudio.com/items?itemName=StratisGroupLtd.StratisSmartContractsTemplate>`_.
-
-The tests described here verify that your smart contract logic executes as intended, before you deploy it to a live network. The tests inside the template use the ``Microsoft.VisualStudio.TestTools.UnitTesting`` library, so may be familiar to C# developers. A brief introduction:
+The smart contract Visual Studio Solution Template, which contains the auction smart contract, also contains tests for this contract. The tests described here verify that your smart contract logic executes as intended before you deploy it to a live network. The tests inside the template use the ``Microsoft.VisualStudio.TestTools.UnitTesting`` library, which may be familiar to C# developers:
 
 - ``[TestClass]`` defines a class in which tests are defined.
 - ``[TestInitialize]`` is used to mark a method to be run before tests execute, most commonly to set up some testing context.
 - ``[TestMethod]`` marks the actual tests to be run.
 - The static class ``Assert`` provides access to a range of methods to validate the results of whatever execution you perform inside your tests.
 
-To run all of the tests together, in Visual Studio right click on ``[TestClass]`` and select `Run Tests`. To run tests individually, right click on the individual method and select `Run Tests`. Once clicked, the solution will take a couple of seconds to build and then the Test Explorer will open. You should see your tests listed next to a green tick indicating they've passed.
+To run all of the tests together, right click on ``[TestClass]`` and select `Run Tests` in Visual Studio. To run tests individually, right click on the individual method and select `Run Tests`. Once clicked, the solution will take a couple of seconds to build and then the Test Explorer will open. You should see your tests listed next to a green tick, which indicates the tests have passed.
 
-You can also debug contract execution in Visual Studio. If you set breakpoints in the Auction contract in methods being tested, and then right click and select `Debug Tests` on the test methods, you will reach your breakpoint and be able to inspect the current state of the contract and step through execution just like you were debugging any other C# application.
+You can also debug contract execution in Visual Studio. If breakpoints are set in the Auction smart contract methods and you then right click and select `Debug Tests` on the test methods, you will reach any breakpoints set in the methods being tested. You can then inspect the current state of the contract and step through execution as with any other C# application.
 
 State Injection
-----------
+---------------
 
-A Stratis Smart Contract's constructor has a single mandatory parameter: ``public ExampleContract(ISmartContractState state)``. Contextual blockchain state is injected into this parameter at contract execution time. State is abstracted behind the ``ISmartContractState`` interface, which enables unit testing by allowing any possible state of the blockchain to be mocked and injected.
+A Stratis Smart Contract's constructor has a single mandatory parameter: ``public ExampleContract(ISmartContractState state)``. Contextual blockchain state is injected into this parameter at contract execution time. Because state is abstracted behind the ``ISmartContractState`` interface, it allows any possible state of the blockchain to be mocked and injected while unit testing is being carried out.
 
 The ``ISmartContractState`` interface contains these members:
 
@@ -49,7 +47,7 @@ Stepping through the `TestBidding()` method from the template should help you un
 
   var auction = new Auction(SmartContractState, Duration);
 
-The first step to testing your contracts is initialising them. You'll note that we're injecting a ``TestSmartContractState`` object into our new ``Auction``. This ``TestSmartContractState`` object is an implementation of the same ``ISmartContractState`` interface that is injected when smart contracts are initialised on-chain, except in this case all of the properties can be set by you.
+The first step to testing your contracts is initialising them. You'll note that we're injecting a ``TestSmartContractState`` object into our new ``Auction``. This ``TestSmartContractState`` object is an implementation of the same ``ISmartContractState`` interface that is injected when smart contracts are initialised on-chain except in this case all of the properties can be set by you.
 This is really handy for you to explicitly target scenarios in your contract's execution.
 
 ::
