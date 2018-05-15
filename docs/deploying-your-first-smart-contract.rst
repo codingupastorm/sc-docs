@@ -82,7 +82,7 @@ And this line at the top of the Auction.cs file:
 
 So why is this line problematic inside a smart contract? Different nodes are going to execute the code at different times and because of this, they all receive a different result for ``DateTime.Now``. If this value was persisted in some way, all of the nodes would receive a different outcome for the contract state and would fail to reach a consensus.
 
-Make sure you have saved auction.cs and run the validation command again. SCT recognizes this non-deterministic call:
+Make sure you have saved Auction.cs and run the validation command again. SCT recognizes this non-deterministic call:
 
 ::
 
@@ -97,7 +97,7 @@ Make sure you have saved auction.cs and run the validation command again. SCT re
   Determinism Valid: False
 
   .ctor:
-   System.DateTime System.DateTime::get_Now() is non-deterministic.
+     System.DateTime System.DateTime::get_Now() is non-deterministic.
    
 Now back out the non-deterministic code and resave.
 
