@@ -233,20 +233,19 @@ Placing a bid on the auction smart contract
 You can use Swagger to place a bid on the auction smart contract you have deployed. Navigate to the SmartContracts section and use `/api/SmartContracts/build-and-send-call`. For example, the following usage places a bid of 10 TSTRAT.
 ::
 
-{
-  "walletName": "[YOUR_WALLET_NAME]",
-  "accountName": "account 0",
-  "contractAddress": "[YOUR_CONTRACT_ADDRESS]",
-  "methodName": "Bid",
-  "amount": "10",
-  "feeAmount": "1",
-  "password": "[YOUR_PASSWORD]",
-  "gasPrice": "1",
-  "gasLimit": "30000",
-  "sender": "[A_WALLET_ADDRESS]",
-  "parameters": [    
-  ]
-}
+  {
+    "walletName": "[YOUR_WALLET_NAME]",
+    "accountName": "account 0",
+    "contractAddress": "[YOUR_CONTRACT_ADDRESS]",
+    "methodName": "Bid",
+    "amount": "10",
+    "feeAmount": "1",
+    "password": "[YOUR_PASSWORD]",
+    "gasPrice": "1",
+    "gasLimit": "30000",
+    "sender": "[A_WALLET_ADDRESS]",
+    "parameters": []
+  }
 
 Once you have placed the bid, you will need to wait for the Consensus.Height to be incremented by another 5 blocks. At this point the bid transaction is confirmed. Finally, you can check the bid is stored on the test network.
  
