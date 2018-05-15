@@ -2,17 +2,17 @@
 Testing
 ###############################
 
-With Stratis Smart Contracts, your tests can be developed and debugged using C# inside Visual Studio. The tests as described here verify that your smart contract logic executes as intended, before you deploy it to a live network.
+Stratis Smart Contracts are unit-testable in the same way as any other C# class. Unit tests can be written with the testing framework of your choice. Tests can be developed and debugged with Visual Studio's step-through debugger.
 
 .. note::
-  Testing of Stratis Smart Contracts is still primitive. Future versions of smart contracts will enable testing with the resource tracking code injected, and on top of a local test blockchain.
+  While contracts are fully testable, available testing utilities are still primitive. Future versions of smart contracts will enable testing with the resource tracking code injected, on top of a local test blockchain.
 
 The Basics
 ----------
 
 This section will again reference the `Stratis Smart Contracts Visual Studio Template <https://marketplace.visualstudio.com/items?itemName=StratisGroupLtd.StratisSmartContractsTemplate>`_.
 
-The tests inside the template use the ``Microsoft.VisualStudio.TestTools.UnitTesting`` library, so may be familiar to C# developers. A brief introduction:
+The tests described here verify that your smart contract logic executes as intended, before you deploy it to a live network. The tests inside the template use the ``Microsoft.VisualStudio.TestTools.UnitTesting`` library, so may be familiar to C# developers. A brief introduction:
 
 - ``[TestClass]`` defines a class in which tests are defined.
 - ``[TestInitialize]`` is used to mark a method to be run before tests execute, most commonly to set up some testing context.
@@ -22,6 +22,23 @@ The tests inside the template use the ``Microsoft.VisualStudio.TestTools.UnitTes
 To run all of the tests together, in Visual Studio right click on ``[TestClass]`` and select `Run Tests`. To run tests individually, right click on the individual method and select `Run Tests`. Once clicked, the solution will take a couple of seconds to build and then the Test Explorer will open. You should see your tests listed next to a green tick indicating they've passed.
 
 You can also debug contract execution in Visual Studio. If you set breakpoints in the Auction contract in methods being tested, and then right click and select `Debug Tests` on the test methods, you will reach your breakpoint and be able to inspect the current state of the contract and step through execution just like you were debugging any other C# application.
+
+State Injection
+----------
+
+A Stratis Smart Contract's constructor has a single mandatory parameter: ``public ExampleContract(ISmartContractState state)``. Contextual blockchain state is injected into this parameter at contract execution time. State is abstracted behind the ``ISmartContractState`` interface, which enables unit testing by allowing any possible state of the blockchain to be mocked and injected.
+
+The ``ISmartContractState`` interface contains these members:
+
+* IBlock Block - Contains information about the block in which the smart contract transaction has been included
+* IMessage Message - Contains information about the contract invocation environment
+* IPersistentState PersistentState - Represents the persistent storage available to a contract
+* IGasMeter GasMeter - Represents an object used to measure the amount of gas consumed during contract execution
+* IInternalTransactionExecutor InternalTransactionExecutor - Represents an executor used to process transactions generated from within the contract
+* IInternalHashHelper InternalHashHelper - Provides hashing functions to the contract
+* Func<ulong> GetBalance - A function which provides the current balance of the contract
+
+A unit test can define its own representations of these interfaces, and then inject them into the contract under test.
 
 An Example
 ----------
@@ -43,6 +60,7 @@ This is really handy for you to explicitly target scenarios in your contract's e
 These calls check that the world state is as we expect after contract instantiation. Namely that no highest bidder has yet been set, and the current highest bidder is set to 0, which is exactly what the constructor is set to do.
 
 ::
+
   ((TestMessage)SmartContractState.Message).Value = 100;
 
   auction.Bid();
