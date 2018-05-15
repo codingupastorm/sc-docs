@@ -4,12 +4,15 @@ Smart Contracts - Basic Theory
 
 You may already have heard of DApps (Decentralized Apps). A smart contract can also be thought of as a DApp because it is both an application and is decentralized. In fact, DApps consist of a web-based front-end that sits on top of a smart contract. A DApp is decentralized because of the properties of the smart contract; a copy of the DApp’s smart contract is stored on each node in the blockchain.
 
-Although a smart contract is stored on all nodes, it is important to remember they only need to be run by one node to accomplish their task. They are invoked when a transaction is added to a blockchain and usually affect the outcome of that transaction.
+Although a smart contract is stored on all nodes, it is important to remember they only need to be run by one node to accomplish their task. They can be invoked when a transaction is added to a blockchain and, according to how they are programmed, smart contracts can redistribute the funds sent in the transaction.
 
 .. note::
     Given a specific input, the output of the smart contract is the same no matter which node it is run on. Because of this property, smart contracts are deterministic.
 
 Smart contracts are also capable of storing (persisting) data. If they could not do this, it would be impossible for them to achieve the required level of sophistication. You might be asking a question at this point: if a smart contract is stored on every node in the blockchain but gets run on random nodes, what happens to any data it stores when running? The answer is that any data stored by a smart contract is broadcast across all nodes on the network. A smart contract on any node has up-to-date copies of its “database”.
+
+.. note::
+    When a smart contract is distributed across the network as part of a block, each node that receives the block runs the smart contract during the consensus building process. If a smart contract is found to be invalid (non-deterministic for example), the block containing the smart contract is rejected.   
 
 Using .NET for smart contracts
 ------------------------------
