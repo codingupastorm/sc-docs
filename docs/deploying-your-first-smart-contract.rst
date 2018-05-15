@@ -42,7 +42,7 @@ Build the SCT and navigate to its project directory:
 
   cd src/Stratis.SmartContracts.Tools.Sct
 
-You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step out for them before you deploy. Right click on your Auction.cs file in Visual Studio and click ‘Copy Path’. Then, back on the command line, use SCTs validate command:
+You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step out for them before you deploy. Right click on your Auction.cs file tab in Visual Studio and click ‘Copy Path’. Then, back on the command line, use SCTs validate command:
 
 ::
 
@@ -85,6 +85,7 @@ So why is this line problematic inside a smart contract? Different nodes are goi
 Make sure you have saved auction.cs and run the validation command again. SCT recognizes this non-deterministic call:
 
 ::
+
   ====== Smart Contract Validation results for file [YOUR_FILE_PATH] ======
   Compilation Result
   Compilation OK: True
