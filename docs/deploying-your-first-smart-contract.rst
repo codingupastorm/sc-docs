@@ -2,7 +2,7 @@
 Deploying Your First Smart Contract
 ###############################
 
-This chapter takes you through deploying a smart contract, which simulates an auction. The smart contract is provided as a Visual Studio Project Template. As part of the deployment process, the smart contract is validated to ensure it does not contain any determinism. Once deployed, a bid is then placed on the auction to test that the smart contract was deployed correctly. The steps taken when deploying the smart contract are as follows:
+This chapter takes you through deploying a smart contract, which simulates an auction. The smart contract is provided as a Visual Studio Project Template. As part of the deployment process, the smart contract is validated to ensure it does not contain any non-deterministic elements. Once deployed, a bid is then placed on the auction to test that the smart contract was deployed correctly. The steps taken when deploying the smart contract are as follows:
 
 1. Download or clone the source. 
 2. Create a smart contracts project, which will include an auction smart contract and unit tests.
@@ -21,10 +21,16 @@ Downloading the smart contract source
 
 First, download a copy of `Microsoft Visual Studio <https://www.visualstudio.com/downloads/>`_ if you don't have a copy already. This is the standard IDE for C# development and the Community Edition is available for free.
 
-Next, you must download or clone the `sc-alpha branch of the Stratis Smart Contract Enabled Full Node <https://github.com/stratisproject/StratisBitcoinFullNode/tree/sc-alpha>`_. This repository contains everything you need to run a Stratis full node that can sync and mine on a Stratis smart contract network. It also contains:
+Next, make sure you have the latest .NET SDK installed. You can verify this by running ``dotnet --version`` on the command line. If you do not have the .NET SDK installed, download and install it from `here <https://www.microsoft.com/net/learn/get-started/windows#install>`_.
 
-1. The SCT which, as you will see, helps validate and deploy contracts.
-2. The smart contract Visual Studio Project Template, which contains the auction smart contract as "starting code" for any project created with it.
+Next, you must download or clone the `sc-alpha branch of the Stratis Smart Contract Enabled Full Node <https://github.com/stratisproject/StratisBitcoinFullNode/tree/sc-alpha>`_. This repository contains everything you need to run a Stratis full node that can sync and mine on a Stratis smart contract network. It also contains the ``sct`` tool, which validates and deploys contracts.
+
+Installing the Visual Studio template 
+-------------------------------------
+
+The Stratis smart contract Visual Studio template provides an easy way to create a new smart contract project. It contains a template for a smart contract, unit tests, and references to appropriate NuGet packages.
+
+The template can be `found on the Visual Studio marketplace <https://marketplace.visualstudio.com/items?itemName=StratisGroupLtd.StratisSmartContractsTemplate>`_.
 
 Creating a smart contracts project
 ----------------------------------
@@ -42,7 +48,7 @@ Build the SCT and navigate to its project directory:
 
   cd src/Stratis.SmartContracts.Tools.Sct
 
-You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step for them before you deploy. Right click on your Auction.cs file tab in Visual Studio and click ‘Copy Path’. Then, back on the command line, use SCTs validate command:
+You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step for them before you deploy. Right click on your Auction.cs file tab in Visual Studio and click ‘Copy Path’. Then, back on the command line, use the ``sct validate`` command:
 
 ::
 
@@ -186,7 +192,7 @@ While you deploy your smart contract, it is important to remember that deploying
 * Creating a transaction which contains the contract’s code.
 * Broadcasting the transaction to the network.
 
-From the command-line, you can use the SCTs deploy command to achieve all these steps:
+From the command-line, you can use the ``sct deploy`` command to achieve all these steps:
 
 ::
 
