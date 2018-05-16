@@ -46,7 +46,7 @@ Build the SCT and navigate to its project directory:
 
   cd src/Stratis.SmartContracts.Tools.Sct
 
-You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step for them before you deploy. Right click on your Auction.cs file tab in Visual Studio and click ‘Copy Path’. Then, back on the command line, use SCTs validate command:
+You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step for them before you deploy. Right click on your Auction.cs file tab in Visual Studio and click ‘Copy Path’. Then, back on the command line, use the ``sct validate`` command:
 
 ::
 
@@ -190,7 +190,7 @@ While you deploy your smart contract, it is important to remember that deploying
 * Creating a transaction which contains the contract’s code.
 * Broadcasting the transaction to the network.
 
-From the command-line, you can use the SCTs deploy command to achieve all these steps:
+From the command-line, you can use the ``sct deploy`` command to achieve all these steps:
 
 ::
 
