@@ -20,3 +20,6 @@ Smart contract execution costs the gas price (in satoshis) multiplied by the gas
   Instruction Cost, 1, The cost for executing each CIL instruction.
   System Method Call Cost, 0, The cost for calling any system method.
   Storage Cost (byte), 1, The cost for storing 1 byte via PersistentState. This includes both keys and values.
+
+.. note::
+  Base cost and contract creation cost are affected by changes in the gas price too. For example, if the gas price is set to 2, the base cost and contract creation cost rise to 2000. System method calls always remain free.
