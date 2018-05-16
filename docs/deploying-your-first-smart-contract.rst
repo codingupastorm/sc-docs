@@ -4,14 +4,15 @@ Deploying Your First Smart Contract
 
 This chapter takes you through deploying a smart contract, which simulates an auction. The smart contract is provided as a Visual Studio Project Template. As part of the deployment process, the smart contract is validated to ensure it does not contain any non-deterministic elements. Once deployed, a bid is then placed on the auction to test that the smart contract was deployed correctly. The steps taken when deploying the smart contract are as follows:
 
-1. Download or clone the source. 
-2. Create a smart contracts project, which will include an auction smart contract and unit tests.
-3. Validate the smart contract with the smart contract tool (SCT).
-4. Run the smart contract enabled version of the full node.
-5. Get the funds to deploy the auction smart contract and place a bid.
-6. Build and deploy the smart contract.
-7. Place a bid.
-8. Check the bid has been stored on the test network.
+1. Download or clone the source.
+2. Installing the Visual Studio Project Template. 
+3. Create a smart contracts project, which will include an auction smart contract and unit tests.
+4. Validate the smart contract with the smart contract tool (SCT).
+5. Run the smart contract enabled version of the full node.
+6. Get the funds to deploy the auction smart contract and place a bid.
+7. Build and deploy the smart contract.
+8. Place a bid.
+9. Check the bid has been stored on the test network.
 
 .. note::
     This chapter assumes a Windows development environment. Stratis smart contracts can be developed on other platforms, and documentation to support this will be available soon.
@@ -25,10 +26,10 @@ Next, make sure you have the latest .NET SDK installed. You can verify this by r
 
 Next, you must download or clone the `sc-alpha branch of the Stratis Smart Contract Enabled Full Node <https://github.com/stratisproject/StratisBitcoinFullNode/tree/sc-alpha>`_. This repository contains everything you need to run a Stratis full node that can sync and mine on a Stratis smart contract network. It also contains the ``sct`` tool, which validates and deploys contracts.
 
-Installing the Visual Studio template 
--------------------------------------
+Installing the Visual Studio Project Template 
+---------------------------------------------
 
-The Stratis smart contract Visual Studio template provides an easy way to create a new smart contract project. It contains a template for a smart contract, unit tests, and references to appropriate NuGet packages.
+The Stratis smart contract Visual Studio Project Template provides an easy way to create a new smart contract project. It contains a template for a smart contract, unit tests, and references to appropriate NuGet packages.
 
 The template can be `found on the Visual Studio marketplace <https://marketplace.visualstudio.com/items?itemName=StratisGroupLtd.StratisSmartContractsTemplate>`_.
 
@@ -168,7 +169,7 @@ To create a wallet, navigate to the Wallet section and use the `/api/Wallet/crea
     "password": "password"
   }
 
-You now have a wallet containing some TSTRAT addresses. To see the addresses, use the `/api/Wallet/addresses` call, which is also found in the Wallet section. You just need to specify your wallet name.
+You now have a wallet containing some TSTRAT addresses. To see the addresses, use the `/api/Wallet/addresses` call, which is also found in the Wallet section. You just need to specify your wallet name and an AccountName of "account 0".
 
 Getting funds 
 ^^^^^^^^^^^^^

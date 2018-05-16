@@ -10,7 +10,7 @@ Stratis Smart Contracts are unit-testable in the same way as any other C# class.
 The Basics
 ----------
 
-The smart contract Visual Studio Project Template, which contains the auction smart contract, also contains tests for this contract. The tests described here verify that your smart contract logic executes as intended before you deploy it to a live network. The tests inside the template use the ``Microsoft.VisualStudio.TestTools.UnitTesting`` library, which may be familiar to C# developers:
+The smart contract Visual Studio Project Template, which contains the Auction smart contract, also contains tests for this contract. The tests described here verify that your smart contract logic executes as intended before you deploy it to a live network. The tests inside the template use the ``Microsoft.VisualStudio.TestTools.UnitTesting`` library, which may be familiar to C# developers:
 
 - ``[TestClass]`` defines a class in which tests are defined.
 - ``[TestInitialize]`` is used to mark a method to be run before tests execute, most commonly to set up some testing context.
@@ -47,7 +47,7 @@ Stepping through the `TestBidding()` method from the template should help you un
 
   var auction = new Auction(SmartContractState, Duration);
 
-The first step to testing your contracts is initialising them. A ``TestSmartContractState`` object is injected into the ``Auction`` object. This ``TestSmartContractState`` object is an implementation of the same ``ISmartContractState`` interface that is injected when smart contracts are initialised on-chain except that in this case all of the properties can be set by you. This is really useful if you want to explicitly target scenarios in your contract's execution.
+The first step to testing your contracts is initialising them. A ``TestSmartContractState`` object is injected into the ``Auction`` object. This ``TestSmartContractState`` object is an implementation of the same ``ISmartContractState`` interface that is injected when smart contracts are initialised on-chain. The only difference is that in this case all of the properties can be set by you. This is really useful if you want to explicitly target scenarios in your contract's execution.
 
 ::
 

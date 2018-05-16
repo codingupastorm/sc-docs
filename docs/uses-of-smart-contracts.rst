@@ -24,11 +24,6 @@ Smart contracts in gaming
 
 Smart contracts can be used in the storing of statistics for tradable game entities such as a weapon or a hero. For example, they can record the history of the hero and level up the hero in respect to those achievements. The higher the level of the hero the more they can be traded for. The procedure held in the smart contract for levelling up the hero is transparent and so is the path the hero took to achieve their current level.
 
-Smart contracts in gambling
----------------------------
-
-Using smart contracts in gambling combines both a financial element and a gaming element. Smart contracts can be used to take bets and pay money based on the results of games. When the results are stored on the blockchain, the randomness of games can also be checked. Smart contracts could also do this and be a source of published payouts. Because the smart contract code which checks the randomness of the results can always be inspected, trust that the gambling provider is playing fair can be gained.
-
 Smart contracts in delay repay schemes
 --------------------------------------
 
