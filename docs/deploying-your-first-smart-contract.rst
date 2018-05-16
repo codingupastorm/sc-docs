@@ -150,7 +150,7 @@ To get funds, you must first create a wallet and then request the funds. The nex
 Creating a wallet
 ^^^^^^^^^^^^^^^^^
 
-Because the smart contract API hasn't been integrated with any GUI wallets yet, you must use the API directly via Swagger. Whilst your node is running, navigate to `localhost:38220/swagger <localhost:38220/swagger>`_.
+Because the smart contract API hasn't been integrated with any GUI wallets yet, you must use the API directly via Swagger. Whilst your node is running, navigate to `http://localhost:38220/swagger <http://localhost:38220/swagger>`_.
 
 To create a wallet, navigate to the Wallet section and use the `/api/Wallet/create` call. You only need to specify a name and password in the request. For example:
 
