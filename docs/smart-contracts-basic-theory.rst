@@ -21,11 +21,13 @@ The most important aspect of the implementation of Stratis smart contracts is th
 
 Because smart contracts are deterministic, they cannot use all capabilities of the C# language or all the .NET Core libraries. The Stratis smart contracts suite includes a validation tool that checks for any non-deterministic elements in any smart contracts that you write.
 
-STRAT - gas for Stratis smart contracts
+Gas for Stratis smart contracts
 -------------------------------
 
-Smart contracts require gas to run. How much gas they need relates to how many instructions they contain. Gas is an additional expenditure to transaction fees. For example, if you send money to a smart contract, you must pay normal transaction fees and the cost in gas for any methods you call on the smart contract.
+Smart contracts require 'gas' to run. How much gas they need relates to how many instructions they contain. Gas is an additional expenditure to transaction fees. For example, if you send money to a smart contract, you must pay normal transaction fees and the cost in gas for any methods you call on the smart contract.
+
+Gas is separate from STRAT. Its relationship to strat is defined by ``strat = gas * gasPrice``.
 
 .. note::
-    Stratis smart contracts use STRAT as gas. As this this is an Alpha release, you will use test STRAT, which are referred to as TSTRAT during this document.
+    As this this is an Alpha release, you will use test STRAT, which are referred to as TSTRAT during this document.
 
