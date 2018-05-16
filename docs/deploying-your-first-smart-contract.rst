@@ -43,13 +43,13 @@ Validating your smart contract
 
 When you attempt to deploy a smart contract by including it in a transaction, it is tested to see if its C# code is correct and deterministic. Mining nodes carry out this testing before they include a smart contract transaction in a block. In addition, other nodes on the network attempt to validate any smart contracts that they find in any blocks they receive. If the smart contracts are not valid, the entire block is rejected. Therefore, you will want to know your smart contract meets the validation criteria before you try and deploy it. Stratis provides SCT (a command-line tool) for validating and building smart contracts.
 
-Build the SCT and navigate to its project directory:
+The SCT tool is located within the source code of the full node that was cloned earlier. Navigate to this source code directory, and then change into the SCT project directory:
 
 ::
 
   cd src/Stratis.SmartContracts.Tools.Sct
 
-You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step for them before you deploy. Right click on your Auction.cs file tab in Visual Studio and click ‘Copy Path’. Then, back on the command line, use the ``sct validate`` command:
+You are now going to validate the auction smart contract and request to see its byte code. When you begin writing your own smart contracts, you will also carry out this step for them before you deploy. Right click on your Auction.cs file tab in Visual Studio and click ‘Copy Path’. Then, back on the command line, use the ``validate`` command:
 
 ::
 
@@ -194,7 +194,7 @@ While you deploy your smart contract, it is important to remember that deploying
 * Creating a transaction which contains the contract’s code.
 * Broadcasting the transaction to the network.
 
-From the command-line, you can use the ``sct deploy`` command to achieve all these steps:
+From the command-line, you can use the ``deploy`` command to achieve all these steps:
 
 ::
 
