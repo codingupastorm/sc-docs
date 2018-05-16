@@ -19,7 +19,7 @@ Using .NET for smart contracts
 
 The most important aspect of the implementation of Stratis smart contracts is they use “real” .NET, which is to say .NET Core is used to execute them. The Stratis Full Node is also written in C# and the route of execution for both it and and a Stratis smart contract is the same. Stratis smart contracts are not just using the C# syntax, they are using the full tried and tested C# package supplied by Microsoft.
 
-Because smart contracts are deterministic, they cannot use all capabilities of the C# language or all the .NET Core libraries. The Stratis smart contracts suite includes a validation tool that checks for any non-deterministic elements in any smart contracts that you write.
+Because smart contracts must execute deterministically, they cannot use all capabilities of the C# language or all the .NET Core libraries. The Stratis smart contracts suite includes a validation tool that checks for any non-deterministic elements in any smart contracts that you write.
 
 Gas for Stratis smart contracts
 -------------------------------
