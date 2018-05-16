@@ -135,6 +135,7 @@ To interact with the smart contract test network, you now need to build the smar
 
 ::
 
+  cd src/Stratis.StratisSmartContractsD
   dotnet run -addnode=13.64.119.220 -addnode=20.190.57.145 -addnode=40.68.165.12
 
 Adding the three nodes attempts to connect the daemon to the smart contract test network. 
