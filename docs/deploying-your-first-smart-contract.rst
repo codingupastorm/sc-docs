@@ -43,7 +43,7 @@ Validating your smart contract
 
 When you attempt to deploy a smart contract by including it in a transaction, it is tested to see if its C# code is correct and deterministic. Mining nodes carry out this testing before they include a smart contract transaction in a block. In addition, other nodes on the network attempt to validate any smart contracts that they find in any blocks they receive. If the smart contracts are not valid, the entire block is rejected. Therefore, you will want to know your smart contract meets the validation criteria before you try and deploy it. Stratis provides SCT (a command-line tool) for validating and building smart contracts.
 
-To use SCT, first make sure you navigate to its project directory:
+The SCT tool is located within the source code of the full node that was cloned earlier. Navigate to this source code directory, and then change into the SCT project directory:
 
 ::
 
