@@ -2,7 +2,7 @@
 Appendix - Gas Prices
 ###############################
 
-Smart contract execution costs the gas price multiplied by the gas used. The gas price and the maximum amount of gas to be used are set at the transaction level.
+Smart contract execution costs the gas price (in satoshis) multiplied by the gas used. The gas price and the maximum amount of gas to be used are set at the transaction level.
 
 For most transactions we would recommend setting your gas price to 1 and the gas limit to 100000.
 
