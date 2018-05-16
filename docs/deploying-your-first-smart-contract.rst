@@ -169,7 +169,7 @@ To create a wallet, navigate to the Wallet section and use the `/api/Wallet/crea
     "password": "password"
   }
 
-You now have a wallet containing some TSTRAT addresses. To see the addresses, use the `/api/Wallet/addresses` call, which is also found in the Wallet section. You just need to specify your wallet name.
+You now have a wallet containing some TSTRAT addresses. To see the addresses, use the `/api/Wallet/addresses` call, which is also found in the Wallet section. You just need to specify your wallet name and an AccountName of "account 0".
 
 Getting funds 
 ^^^^^^^^^^^^^
