@@ -198,7 +198,7 @@ From the command-line, you can use the ``deploy`` command to achieve all these s
 
 ::
 
-  dotnet run -- deploy [PATH_TO_SMART_CONTRACT] http://localhost:38220 -wallet [YOUR_WALLET_NAME] -password [YOUR_PASSWORD] -fee 0.002 -sender=[YOUR_WALLET_ADDRESS]
+  dotnet run -- deploy [PATH_TO_SMART_CONTRACT] http://localhost:38220 -wallet [YOUR_WALLET_NAME] -password [YOUR_PASSWORD] -fee 0.002 -sender=[YOUR_WALLET_ADDRESS] -params=[CONSTRUCTOR_PARAMS_IF_REQUIRED]
   
 As before, when you were validating the auction smart contract, you need to obtain the path to the Auction.cs file. However, because the Auction C# class contains a constructor parameter, ``durationBlocks``, you must pass this value as well. The ``durationBlocks`` parameter specifies how many blocks are added to blockchain before the auction ends. In the following example, 20 blocks are added to the blockchain before the auction ends:
 
