@@ -137,7 +137,7 @@ To interact with the smart contract test network, you now need to build the smar
 ::
 
   cd src/Stratis.StratisSmartContractsD
-  dotnet run -addnode=13.64.119.220 -addnode=20.190.57.145 -addnode=40.68.165.12
+  dotnet run -- -addnode=13.64.119.220 -addnode=20.190.57.145 -addnode=40.68.165.12
 
 Adding the three nodes attempts to connect the daemon to the smart contract test network. 
 
@@ -180,7 +180,7 @@ Alternatively, if you want to get more involved and earn some TSTRAT along the w
 
 ::
 
-  dotnet run -addnode=13.64.119.220 -addnode=20.190.57.145 -addnode=40.68.165.12 -mine=1 -mineaddress=[YOUR_WALLET_ADDRESS]
+  dotnet run -- -addnode=13.64.119.220 -addnode=20.190.57.145 -addnode=40.68.165.12 -mine=1 -mineaddress=[YOUR_WALLET_ADDRESS]
   
 Use the TSTRAT address you use for the mine address when deploying and testing the smart contract. 
 
@@ -204,7 +204,7 @@ As before, when you were validating the auction smart contract, you need to obta
 
 ::
 
-  dotnet run -- deploy PATH_TO_SMART_CONTRACT http://localhost:38220 -wallet [YOUR_WALLET_NAME] -password [YOUR_PASSWORD] -fee 0.002 -sender=[YOUR_WALLET_ADDRESS] --params 10#20
+  dotnet run -- deploy PATH_TO_SMART_CONTRACT http://localhost:38220 -wallet [YOUR_WALLET_NAME] -password [YOUR_PASSWORD] -fee 0.002 -sender=[YOUR_WALLET_ADDRESS] -params="10#20"
   
 A value of 20 is used because blocks are not confirmed until they are 5 blocks deep. Until the block which the smart contract is in has been confirmed, you cannot run the smart contract. You will notice that the value of 20 is preceeded by 10#. This information is part of the ``durationBlocks`` constructor parameter. More information on specifying constructor parameters is given in `Specifying smart contract constructor parameters`_. 
 
