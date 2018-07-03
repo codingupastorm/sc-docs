@@ -109,6 +109,9 @@ Currently, only certain Types of data can be serialized. Refer to the following 
   System.UInt64, 10, System.UInt64.ToString()
   Stratis.SmartContracts.Address, 11, Stratis.SmartContracts.Address.ToString()
 
+.. note::
+    The requirement to pass in the Type is ugly, but it allows us to resolve overloaded methods easily.
+
 Example
 -------------
 A smart contract has a constructor with the following signature:
