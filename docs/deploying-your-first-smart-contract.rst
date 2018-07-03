@@ -217,7 +217,9 @@ Specifying smart contract constructor parameters
 
 Smart contract parameters are serialized into a string. The format of each parameter is "{0}#{1}" where: {0} is an integer representing the Type of the serialized data and {1} is the serialized data itself. Serialized array values are separated by a dash ``-`` character.
 
-Each parameter must be separated by the pipe ``|`` character.
+These params must be serialized into a string. The format of each parameter is "{0}#{1}", where {0} is an integer representing the Type of the serialized data, and {1} is the serialized data itself.
+
+Multiple params must be specified in order and can be done like so: ``-param="7#abc" -param="8#123"``.
 
 Currently, only certain types of data can be serialized. Refer to the following table for the mapping between a type and its integer representation.
 
@@ -251,10 +253,11 @@ In addition to the mandatory ISmartContractState, there are 3 parameters which n
 
 The serialized string representation of this data looks like this:
 
+The command for passing these params to sct looks like this:
+
 ::
 
-  9#0x95D34980095380851902ccd9A1Fb4C813C2cb639|10#1000000|3#AD-BC-CD
-
+  -param="9#0x95D34980095380851902ccd9A1Fb4C813C2cb639" -param="10#1000000" -param="3#AD-BC-CD"
 
 Placing a bid on the auction smart contract
 -------------------------------------------
