@@ -87,7 +87,9 @@ Deployment with constructor params
 '''''''
 If the contract you are deploying accepts constructor params, you can additionally pass these in to the command line tool via the ``params`` argument.
 
-These params must be serialized into a string. The format of each parameter is "{0}#{1}", where {0} is an integer representing the Type of the serialized data, and {1} is the serialized data itself. Additionally, parameters must be separated by the pipe ``|`` character.
+These params must be serialized into a string. The format of each parameter is "{0}#{1}", where {0} is an integer representing the Type of the serialized data, and {1} is the serialized data itself.
+
+Multiple params must be specified in order and can be done like so: ``-param="7#abc" -param="8#123"``.
 
 Currently, only certain Types of data can be serialized. Refer to the following table for the mapping between Type and its integer mapping.
 
@@ -121,8 +123,8 @@ In addition to the mandatory ISmartContractState, there are 3 params which need 
 * UInt64 supply = 1000000
 * Byte[] secretBytes = { 0xAD, 0xBC, 0xCD }
 
-The serialized string representation of this data looks like this:
+The command for passing these params to sct looks like this:
 
 ::
 
-  9#0x95D34980095380851902ccd9A1Fb4C813C2cb639|10#1000000|3#AD-BC-CD
+  -param="9#0x95D34980095380851902ccd9A1Fb4C813C2cb639" -param="10#1000000" -param="3#AD-BC-CD"
