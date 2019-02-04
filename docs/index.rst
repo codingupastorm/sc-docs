@@ -8,7 +8,7 @@ Stratis Smart Contracts
 
 .. image:: strat.svg
     :width: 250px
-    :alt: Solidity logo
+    :alt: Strat logo
     :align: center
 
 Smart contracts can now be deployed on the Stratis Full Node. Like the Full Node, Stratis smart contracts are written in C#. Smart contracts extend the functionality of a blockchain and allow it to map out complex financial interactions through the sending of funds and storage of data. However, as we shall see later in the document, the uses of smart contracts are not limited to financial interactions.
@@ -25,7 +25,7 @@ Contents
 ========
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    smart-contracts-basic-theory.rst
    uses-of-smart-contracts.rst
